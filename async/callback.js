@@ -10,7 +10,7 @@ function bye(name, otherCallback){
     setTimeout(function() {
         console.log('Bye ' + name);
         otherCallback();
-    }, 1500);
+    }, 1000);
 }
 
 console.log('Initializing proccess...');
