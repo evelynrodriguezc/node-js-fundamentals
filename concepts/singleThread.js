@@ -10,4 +10,4 @@ setInterval(function() {
     } */
 }, 1000);
 
-console.log('Second instruction'); //here we can see this instruction is going to start before the interval
+console.log('Last instruction'); //here we can see this instruction is going to start before the interval
