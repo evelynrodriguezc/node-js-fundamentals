@@ -1,4 +1,4 @@
-function hello(name) {
+async function hello(name) {
     return new Promise(function(resolve, reject){
         setTimeout(function() {
             console.log('Hello ' + name);
@@ -7,7 +7,7 @@ function hello(name) {
     });
 }
 
-function bye(name){
+async function bye(name){
     return new Promise((resolve, reject)  => {
         setTimeout(function() {
             console.log('Bye ' + name);
@@ -16,28 +16,26 @@ function bye(name){
     });
 }
 
-function speak(name){
+async function speak(name){
     return new Promise((resolve, reject) => {
         setTimeout(function() {
             console.log('Bla bla bla ... ');
             /* resolve(name); */
-            reject('Here we have an error');
+            resolve('Here we have an error');
         }, 100);
     });
 }
 
-// ---
+async function main(){
+    let name = await hello('Eve');
+    await speak();
+    await speak();
+    await speak();
+    await bye(name);
+    console.log('...Process completed');
+}
 
-console.log('Proccess started...');
-hello('Eve')
-    .then(bye)
-    .then(speak)
-    .then(speak)
-    .then(speak)
-    .then((name) => {
-        console.log('...Proccess completed');
-    })
-    .catch(error => {    //always use .catch to handle errors if you use promises
-        console.error('There is an error');
-        console.error(error);
-    })
+console.log('Starting process...');
+main();
+console.log('This one will be the second instruction');
+
