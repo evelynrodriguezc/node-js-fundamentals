@@ -1,4 +1,6 @@
 const fs = require('fs'); //fs = filesystem
+// err should be the first parameter of the callbacks
+// on setinterval settimeout
 
 function read(rout, cb) {
     fs.readFile(rout, (err, data) => {
